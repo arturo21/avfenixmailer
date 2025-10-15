@@ -32,22 +32,22 @@ require_once 'AVFenixMailer.php';
 
 ```php
 $mailer = new AVFenixMailer([
-    'host'       => 'smtp.uservers.net',
+    'host'       => 'smtp.xxxxx.xxx',
     'port'       => 587, // o 465 para SSL
-    'username'   => 'factflow.soffia@megapractical.com',
+    'username'   => 'xxxxx@xxxxxx.xxx',
     'password'   => 'tu-contraseña',
     'encryption' => 'tls', // 'ssl', 'tls' o 'none'
     'smtp_auth'  => true,
-    'from'       => 'factflow.soffia@megapractical.com',
-    'from_name'  => 'FactFlow Soffia'
+    'from'       => 'xxxxx@xxxxxx.xxx',
+    'from_name'  => 'PRUEBA'
 ]);
 ```
 
 ## Añadir CC/BCC - Asunto - Mensaje
 ```php
 $mailer->addRecipient('cliente@ejemplo.com', 'Cliente');
-$mailer->addCc('soporte@megapractical.com', 'Soporte');
-$mailer->addBcc('auditoria@megapractical.com', 'Auditoría');
+$mailer->addCc('soporte@xxxxxxxxxx.com', 'Soporte');
+$mailer->addBcc('auditoria@xxxxxxxxxx.com', 'Auditoría');
 
 $mailer->setSubject('Reestablecimiento de Contraseña');
 $mailer->setBodyHtml('<h1>Hola</h1><p>Haz clic para reestablecer tu contraseña.</p>');
@@ -62,26 +62,26 @@ require_once 'AVFenixMailer.php';
 
 try {
     $mailer = new AVFenixMailer([
-        'host'       => 'smtp.uservers.net',
-        'port'       => 587,
-        'username'   => 'factflow.soffia@megapractical.com',
-        'password'   => 'p31X4aM952',
-        'encryption' => 'tls', // 'ssl', 'tls' o 'none'
-        'smtp_auth'  => true,
-        'from'       => 'factflow.soffia@megapractical.com',
-        'from_name'  => 'FactFlow Soffia'
+	    'host'       => 'smtp.xxxxx.xxx',
+	    'port'       => 587, // o 465 para SSL
+	    'username'   => 'xxxxx@xxxxxx.xxx',
+	    'password'   => 'tu-contraseña',
+	    'encryption' => 'tls', // 'ssl', 'tls' o 'none'
+	    'smtp_auth'  => true,
+	    'from'       => 'xxxxx@xxxxxx.xxx',
+	    'from_name'  => 'PRUEBA'
     ]);
 
     $mailer->addRecipient('cliente@ejemplo.com', 'Cliente');
-    $mailer->addCc('soporte@megapractical.com', 'Soporte');
-    $mailer->addBcc('auditoria@megapractical.com', 'Auditoría');
+    $mailer->addCc('soporte@xxxxxxxxxx.com', 'Soporte');
+    $mailer->addBcc('auditoria@xxxxxxxxxx.com', 'Auditoría');
 
     $mailer->setSubject('Reestablecimiento de Contraseña');
     $mailer->setBodyHtml(
         '<h1>Hola</h1><p>Haz clic para reestablecer tu contraseña.</p>'
     );
 
-    $mailer->addAttachment('/var/www/factflow/docs/manual.pdf', 'Manual.pdf', 'application/pdf');
+    $mailer->addAttachment('docs/manual.pdf', 'Manual.pdf', 'application/pdf');
 
     if (!$mailer->send()) {
         throw new Exception('El envío falló. Revisa el log para más detalles.');
