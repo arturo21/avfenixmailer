@@ -1,8 +1,9 @@
-# 🔥 SimpleMailer
+
+<h1 align="center">🔥 AVFenixMailer</h1>
 
 **Versión estable: 1.0.0**
 
-SimpleMailer es una clase PHP ligera y modular para enviar correos electrónicos mediante SMTP con autenticación `AUTH LOGIN`, soporte para `STARTTLS` y `SSL`, encabezados MIME robustos, codificación `quoted-printable`, múltiples destinatarios (`To`, `Cc`, `Bcc`) y archivos adjuntos. Diseñada para máxima compatibilidad con servidores exigentes como `smtp.uservers.net`.
+AVFenixMailer es una clase PHP ligera y modular para enviar correos electrónicos mediante SMTP con autenticación `AUTH LOGIN`, soporte para `STARTTLS` y `SSL`, encabezados MIME robustos, codificación `quoted-printable`, múltiples destinatarios (`To`, `Cc`, `Bcc`) y archivos adjuntos. Diseñada para máxima compatibilidad con servidores exigentes como `smtp.uservers.net`.
 
 ---
 
@@ -24,13 +25,13 @@ SimpleMailer es una clase PHP ligera y modular para enviar correos electrónicos
 SimpleMailer no requiere dependencias externas. Solo incluye el archivo en tu proyecto:
 
 ```php
-require_once 'SimpleMailer.php';
+require_once 'AVFenixMailer.php';
 ```
 
 ## Ejemplo de Uso Básico
 
 ```php
-$mailer = new SimpleMailer([
+$mailer = new AVFenixMailer([
     'host'       => 'smtp.uservers.net',
     'port'       => 587, // o 465 para SSL
     'username'   => 'factflow.soffia@megapractical.com',
@@ -57,10 +58,10 @@ $mailer->send();
 ## Ejemplo con try/catch y excepciones
 
 ```php
-require_once 'SimpleMailer.php';
+require_once 'AVFenixMailer.php';
 
 try {
-    $mailer = new SimpleMailer([
+    $mailer = new AVFenixMailer([
         'host'       => 'smtp.uservers.net',
         'port'       => 587,
         'username'   => 'factflow.soffia@megapractical.com',
