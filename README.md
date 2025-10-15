@@ -27,7 +27,7 @@ SimpleMailer no requiere dependencias externas. Solo incluye el archivo en tu pr
 require_once 'SimpleMailer.php';
 ```
 
-## Ejemplo de Uso
+## Ejemplo de Uso Básico
 
 ```php
 $mailer = new SimpleMailer([
@@ -42,8 +42,7 @@ $mailer = new SimpleMailer([
 ]);
 ```
 
-## Ejemplo de Uso
-
+## Añadir CC/BCC - Asunto - Mensaje
 ```php
 $mailer->addRecipient('cliente@ejemplo.com', 'Cliente');
 $mailer->addCc('soporte@megapractical.com', 'Soporte');
@@ -53,6 +52,45 @@ $mailer->setSubject('Reestablecimiento de Contraseña');
 $mailer->setBodyHtml('<h1>Hola</h1><p>Haz clic para reestablecer tu contraseña.</p>');
 
 $mailer->send();
+```
+
+## Ejemplo con try/catch y excepciones
+
+```php
+require_once 'SimpleMailer.php';
+
+try {
+    $mailer = new SimpleMailer([
+        'host'       => 'smtp.uservers.net',
+        'port'       => 587,
+        'username'   => 'factflow.soffia@megapractical.com',
+        'password'   => 'p31X4aM952',
+        'encryption' => 'tls', // 'ssl', 'tls' o 'none'
+        'smtp_auth'  => true,
+        'from'       => 'factflow.soffia@megapractical.com',
+        'from_name'  => 'FactFlow Soffia'
+    ]);
+
+    $mailer->addRecipient('cliente@ejemplo.com', 'Cliente');
+    $mailer->addCc('soporte@megapractical.com', 'Soporte');
+    $mailer->addBcc('auditoria@megapractical.com', 'Auditoría');
+
+    $mailer->setSubject('Reestablecimiento de Contraseña');
+    $mailer->setBodyHtml(
+        '<h1>Hola</h1><p>Haz clic para reestablecer tu contraseña.</p>'
+    );
+
+    $mailer->addAttachment('/var/www/factflow/docs/manual.pdf', 'Manual.pdf', 'application/pdf');
+
+    if (!$mailer->send()) {
+        throw new Exception('El envío falló. Revisa el log para más detalles.');
+    }
+
+    echo "✅ Correo enviado correctamente.";
+
+} catch (Exception $e) {
+    echo "❌ Error al enviar el correo: " . $e->getMessage();
+}
 ```
 
 ## 📎 Adjuntar archivos
