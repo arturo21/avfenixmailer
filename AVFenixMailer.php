@@ -18,7 +18,7 @@ class AVFenixMailer
     private array $attachments = []; // [ ['path' => ..., 'name' => ..., 'type' => ...], ... ]
     private int $maxAttachmentSize = 5_000_000; // 5 MB por defecto
     private $socket = null;
-    private string $logFile = '/var/www/factflow/build/smtp_debug_log.txt';
+    private string $logFile = 'smtp_debug_log.txt';
 
     public function __construct(array $config)
     {
